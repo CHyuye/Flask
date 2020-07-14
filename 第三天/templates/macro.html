@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>模板的闪现使用</p>
+    {% for msg in get_flashed_messages() %}
+        <p>{{msg}}</p>
+    {% endfor %}
+
+    <hr/>
+    {% macro input() %}
+    <p>创建一个宏</p>
+    <input type="text" value="请输入用户名" name="" size="30">
+    {% endmacro %}
+
+    <h2>input 1</h2>
+    <p>调用宏</p>
+    {{ input() }}
+    <hr/>
+
+    {% macro input2(type, value, name, size) %}
+    <input type="{{type}}" value="{{value}}" name="{{name}}" size="{{size}}">
+    {% endmacro %}
+
+    <h3>input 2</h3>
+    {{ input2("password", "", "", 40) }}
+    <hr/>
+
+    {% macro input3(type="", value="", name="", size=50) %}
+    <input type="{{type}}" value="{{value}}" name="{{name}}" size="{{size}}">
+    {% endmacro %}
+
+
+    <p>导入外部宏</p>
+    {% import "input.html" as m_input %}
+    <h3>input4 调用外部宏</h3>
+    {{ m_input.input4() }}
+</body>
+</html>

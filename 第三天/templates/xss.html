@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post">
+        <textarea name="name"></textarea>
+        <input type="submit" value="commit">
+    </form>
+    <p>重点几个过滤器</p>
+    //| safe 转义字符，即按照前端代码进行展示,很容易造成xss攻击，所以默认不开启
+    {{ text | safe}}  // 转义字符
+    {{ text | trim }}  // 把值的首尾去掉
+    {{ '%s is %d ' | format('name', 20) }} // 格式化输出
+    {{ '<em>hello<em>' | striptags }} //渲染之前把值中间所有的HTML标签删掉
+</body>
+</html>
